@@ -2,7 +2,7 @@
 #define __DEALER_HPP__
 
 
-#include <player.hpp>
+#include "player.hpp"
 
 class Dealer : public Player {
     public:

@@ -2,7 +2,7 @@
 #define __PLAYER_HPP__
 
 #include <vector>
-#include <card.hpp>
+#include "card.hpp"
 
 class Player {
     private:
