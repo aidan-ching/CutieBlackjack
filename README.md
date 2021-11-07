@@ -3,7 +3,7 @@
 Authors: [Jason Guan](https://github.com/jasonguan067), [Aidan Ching](https://github.com/aidan-ching)
 
 ## Project Description
-  * For this CutieHack 2021 Project, we will be encorporating the theme "Better Together" by coding the popular card game Blackjack!
+  * For this CutieHack 2021 Project, we will be incorporating the theme "Better Together" by coding the popular card game Blackjack!
 ![Blackjack-hand-social](https://user-images.githubusercontent.com/75757836/140628853-b77b0d5f-650e-4f27-8b55-968e22a1c542.jpg)
 
 
