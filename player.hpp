@@ -4,8 +4,9 @@
 #include <vector>
 #include "card.hpp"
 
+using namespace std;
 class Player {
-    private:
+    protected:
         std::vector<Card*> Hand;
     public:
         Player(){}
@@ -21,16 +22,10 @@ class Player {
             int c = rand();
             Card* newCard = new Card(c);
             Hand.push_back(newCard);
-            display();
         }
 
-        /* void stay() {
-            //ends turn
-            //dealer plays next
-        } */
-
         int calculateValue(){
-            int total;
+            int total = 0;
             for (unsigned i = 0; i < Hand.size(); ++i)
             {
                 total += Hand.at(i)->getValue();
@@ -40,11 +35,35 @@ class Player {
         } 
 
         void display() {
-            std::cout << "Your hand is: ";
+           cout << "Your hand is: ";
             for(unsigned int i = 0; i < Hand.size(); i++){
-                std::cout << Hand.at(i)->getFace() << " " << Hand.at(i)->getSuit() << " "; 
+                if(i == Hand.size() - 1){
+                    cout << Hand.at(i)->getFace() << " " << Hand.at(i)->getSuit();
+                } else {
+                    cout << Hand.at(i)->getFace() << " " << Hand.at(i)->getSuit() << " | "; 
             }
+            }
+            cout << endl;
+            cout << "----------------------------------------------" << endl;
+            
         }
+
+        void aceCheck(){
+            if (calculateValue() > 21)
+            {
+                for (unsigned i = 0; i < Hand.size(); ++i)
+                {
+                    if (Hand.at(i)->getFace() == "Ace")
+                    {
+                        Hand.at(i)->setValue(1);
+                        break;
+                    }
+                }
+            }
+
+
+        }
+
 
 };
 

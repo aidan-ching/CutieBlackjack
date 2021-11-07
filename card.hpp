@@ -5,23 +5,28 @@
 #include <string>
 #include <cmath>
 #include <ctime>
+#include <algorithm>
+#include <random>
 class Card {
     private:
         std::string suit;
         int value;
         std::string face;
-        int possibleValues [14] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11};
+        int possibleValues [14] = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11};
         std::string possibleFaces [3] = {"Jack", "Queen", "King"}; //ace not included bcuz 11 = ace
         std::string possibleSuits [4] = {"Diamond", "Hearts", "Spades", "Clubs"};
     public:
         Card(int seed) {
-            //construct a random card
-            srand(seed);
-            value = possibleValues[rand() % 14];                  
-            suit = possibleSuits[rand() % 4];
+            std::random_device dvc;
+            std::mt19937 eng(dvc());
+            std::uniform_int_distribution<int> dist(1, 100000);
+            int ans = dist(eng);
+            //srand(ans);
+            value = possibleValues[ans % 13];                  
+            suit = possibleSuits[ans % 4];
             if (value == 10)
             {
-                face = possibleFaces[rand() % 3];
+                face = possibleFaces[ans % 3];
             }
             else if (value == 11)
             {
@@ -43,6 +48,11 @@ class Card {
 
         std::string getSuit() const{
             return suit;
+        }
+
+        void setValue(int val)
+        {
+            value = val;
         }
 
 };
